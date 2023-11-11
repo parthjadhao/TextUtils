@@ -62,3 +62,4 @@ navbar.prototype = {
 navbar.defaultProps = {
   title: "Set the title name"
 }
+
