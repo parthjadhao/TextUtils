@@ -8,11 +8,11 @@ export default function TextForm(props) {
 
   const handleLoClick = () => {
     setText(text.toLowerCase());
-  }
+  };
 
-  const handleClearClick = () =>{
+  const handleClearClick = () => {
     setText("");
-  }
+  };
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
@@ -25,10 +25,17 @@ export default function TextForm(props) {
 
   return (
     <>
-      <div className="container mb-3 my-4">
+      <div
+        className="container mb-3 my-4"
+        style={{ color: props.mode === "light" ? "black" : "white" }}
+      >
         <h2>{props.heading}</h2>
         <textarea
           className="form-control"
+          style={{
+            backgroundColor: props.mode === "dark" ? "black" : "white",
+            color: props.mode === "light" ? "black" : "white",
+          }}
           id="exampleFormControlTextarea1"
           rows="8"
           value={text}
@@ -57,12 +64,17 @@ export default function TextForm(props) {
           Claer
         </button>
       </div>
-      <div className="container">
+      <div
+        className="container"
+        style={{ color: props.mode === "light" ? "black" : "white" }}
+      >
         <h3>Text Summary</h3>
-        <p>word {text.split(" ").length} , characters {text.length}</p>
-        <p>{0.008*text.split(" ").length} minutes to read</p>
+        <p>
+          word {text.split(" ").length} , characters {text.length}
+        </p>
+        <p>{0.008 * text.split(" ").length} minutes to read</p>
         <h3>Preview</h3>
-        <p>{text}</p>
+        <p>{text.length>0?text:"enter something in textbox to preview it here"}</p>
       </div>
     </>
   );

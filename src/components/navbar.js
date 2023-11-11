@@ -4,7 +4,9 @@ import PropTypes from "prop-types";
 export default function navbar(props) {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav
+        className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
+      >
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             {props.title}
@@ -43,6 +45,24 @@ export default function navbar(props) {
               <button className="btn btn-outline-success" type="submit">
                 Search
               </button>
+              <div
+                className={`form-check form-switch text-${
+                  props.mode === "light" ? "dark" : "light"
+                } mx-3`}
+              >
+                <input
+                  onClick={props.toggleMode}
+                  className="form-check-input"
+                  type="checkbox"
+                  id="flexSwitchCheckDefault"
+                />
+                <label
+                  className="form-check-label"
+                  htmlFor="flexSwitchCheckDefault"
+                >
+                  D/L Mode
+                </label>
+              </div>
             </form>
           </div>
         </div>
@@ -60,6 +80,5 @@ navbar.prototype = {
 // specify default value of props
 // which get assigned if you didnt passed any value
 navbar.defaultProps = {
-  title: "Set the title name"
-}
-
+  title: "Set the title name",
+};
