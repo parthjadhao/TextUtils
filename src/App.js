@@ -1,8 +1,8 @@
 // Imports
 import React, { useState } from "react";
-import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 // component Imports
-// import AboutUs from "./components/AboutUs";
+import AboutUs from "./components/AboutUs";
 import ImpAlert from "./components/ImpAlert";
 import Navbar from "./components/navbar";
 import TextForm from "./components/TextForm";
@@ -37,10 +37,22 @@ function App() {
 
   return (
     <>
-      <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
-      <ImpAlert alert={alert} />
-      <TextForm heading="Enter text to analyze below" mode={mode} />
-      {/* <AboutUs/> */}
+      <BrowserRouter>
+        <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
+        <ImpAlert alert={alert} />
+        {/* routes */}
+        <div className="container my-3">
+          <Routes>
+            <Route exact path="/AboutUs" element={<AboutUs />}></Route>
+            <Route
+              exact path="/"
+              element={
+                <TextForm heading="Enter text to analyze below" mode={mode} />
+              }
+            ></Route>
+          </Routes>
+        </div>
+      </BrowserRouter>
     </>
   );
 }
