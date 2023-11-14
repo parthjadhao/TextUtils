@@ -43,9 +43,14 @@ function App() {
         {/* routes */}
         <div className="container my-3">
           <Routes>
-            <Route exact path="/AboutUs" element={<AboutUs />}></Route>
             <Route
-              exact path="/"
+              exact
+              path="/AboutUs"
+              element={<AboutUs mode={mode} />}
+            ></Route>
+            <Route
+              exact
+              path="/"
               element={
                 <TextForm heading="Enter text to analyze below" mode={mode} />
               }
